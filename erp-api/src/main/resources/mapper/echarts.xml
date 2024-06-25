@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.kingborn.erp.sc.dao.echartsDao">
+
+    <select id="countGender" resultType="java.util.LinkedHashMap">
+        WITH aggregated_wip AS (
+            SELECT
+                productId,
+                SUM(quantity) as total_quantity
+            FROM
+                wc_issue_product
+            WHERE
+                businessType = 'sell'
+            GROUP BY
+                productId
+        )
+        SELECT
+            up.name,
+            a.total_quantity
+        FROM
+            uc_product up
+                JOIN
+            aggregated_wip a ON up.id = a.productId
+    </select>
+
+</mapper>

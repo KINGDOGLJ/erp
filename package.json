@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "vuepress": "^1.2.0"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "dependencies": {
+    "echarts": "^5.5.0"
+  }
+}
